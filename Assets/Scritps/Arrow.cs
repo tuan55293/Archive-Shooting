@@ -5,7 +5,6 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     bool m_isFiring = false;
-    long m_targetID;
     Rigidbody2D m_rb;
 
     private void Awake()
@@ -19,7 +18,7 @@ public class Arrow : MonoBehaviour
         if (m_isFiring)
         {
             Vector2 vec = m_rb.velocity;
-            float alpha = Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg;
+            float alpha = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, 0, alpha);
         }
     }
