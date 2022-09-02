@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public Transform arrowSpawnPoint;
     public Transform arrowDirection;
 
-    float m_minLimited;
-    float m_maxLimited;
+    public float m_minLimited;
+    public float m_maxLimited;
     Vector2 m_dragPos1;
     Vector2 m_dragPos2;
     float m_dragDist;
@@ -36,13 +36,15 @@ public class PlayerController : MonoBehaviour
         {
             m_isDragging = true;
             m_dragPos1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-            Debug.Log(m_dragPos1);
+            //Debug.Log(m_dragPos1);
         }
         else if (Input.GetButtonUp("Fire1"))
         {
             m_isDragging = false;
             arrowPoint.localPosition = new Vector3(m_maxLimited, 0f, 0f);
             arrowDirection.localScale = new Vector3(0, 0, 0);
+            if (m_dragDist > 0.1f)
+                Fire();
         }
         if (m_isDragging)
         {
@@ -69,10 +71,11 @@ public class PlayerController : MonoBehaviour
     
     void SpawnArrow()
     {
-        if (arrowPb) return;
+        if (arrowPb == null) return;
 
         m_arrowClone = Instantiate(arrowPb);
-        m_arrowClone.transform.SetParent(arrowSpawnPoint);
+        m_arrowClone.transform.SetParent(arrowSpawnPoint,false);
+        m_arrowClone.transform.localPosition = Vector3.zero;
     }
 
     IEnumerator SpawnNextArrow(float time)
@@ -83,11 +86,11 @@ public class PlayerController : MonoBehaviour
 
     public void Fire()
     {
-        if (m_arrowClone) return;
+        if (m_arrowClone == null) return;
 
         float curforce = Mathf.Clamp(m_dragDist , 0 , 0.5f) * fireForce;
+        Debug.Log(curforce);
         m_arrowClone.Fire(curforce);
-
         StartCoroutine(SpawnNextArrow(0.2f));
     }
 }

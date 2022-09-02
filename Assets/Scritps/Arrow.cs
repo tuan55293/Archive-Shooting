@@ -36,7 +36,7 @@ public class Arrow : MonoBehaviour
     {
         TargetController tg = collision.GetComponent<TargetController>();
 
-        if (collision.gameObject.CompareTag("aplle"))
+        if (collision.gameObject.CompareTag("apple"))
         {
             var c2d = collision.GetComponent<Collider2D>();
             if (c2d)
@@ -44,7 +44,8 @@ public class Arrow : MonoBehaviour
                 c2d.enabled = false;
             }
             collision.transform.SetParent(transform);
-        }else if (collision.gameObject.CompareTag("Head"))
+        }
+        else if (collision.gameObject.CompareTag("Head"))
         {
             //game over;
         }

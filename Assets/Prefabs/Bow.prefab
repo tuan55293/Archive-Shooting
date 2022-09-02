@@ -222,6 +222,8 @@ MonoBehaviour:
   arrowPoint: {fileID: 6002419737478229580}
   arrowSpawnPoint: {fileID: 2223404965022785040}
   arrowDirection: {fileID: 673984956574604913}
+  m_minLimited: -0.2
+  m_maxLimited: -0.25
 --- !u!1 &6902187031592212119
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7027862093183594975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.55, y: 0, z: 0}
+  m_LocalPosition: {x: 1.98, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
