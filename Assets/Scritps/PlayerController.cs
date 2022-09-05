@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         if (m_arrowClone == null) return;
 
         float curforce = Mathf.Clamp(m_dragDist , 0 , 0.5f) * fireForce;
-        Debug.Log(curforce);
+        //Debug.Log(curforce);
         m_arrowClone.Fire(curforce);
         StartCoroutine(SpawnNextArrow(0.2f));
     }

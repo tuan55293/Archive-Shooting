@@ -34,7 +34,7 @@ public class Arrow : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TargetController tg = collision.GetComponent<TargetController>();
+        TargetController tg = collision.transform.root.GetComponent<TargetController>();
 
         if (collision.gameObject.CompareTag("apple"))
         {
